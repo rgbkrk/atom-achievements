@@ -1,14 +1,15 @@
 {
   "name": "achievements",
   "main": "./lib/achievements",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Unlock Achievements in your Editor",
-  "activationEvents": ["achievements:toggle"],
+  "activationEvents": [
+    "achievements:toggle"
+  ],
   "repository": "https://github.com/rgbkrk/atom-achievements",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
