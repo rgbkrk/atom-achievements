@@ -6,12 +6,20 @@ Unlock Achievements in your Editor
 
 ![](https://f.cloud.github.com/assets/836375/2418108/0a402398-ab37-11e3-8111-e0f374079515.gif)
 
+# Adding achievements
+
+Achievements can be triggered using the `achievement:unlock` event:
+
+```
+atom.emit "achievement:unlock", name: "Used a tutorial!"
+```
+
 ## ROADMAP
 
 * Use the swirling octocat icon :white_check_mark:
 * Populate achievement bar using a message :white_check_mark:
 * Time achievements display out :white_check_mark:
 * Add configuration for timer :white_check_mark:
-* Create a simple object with `event :arrow_right: achievement` mappings
-* Map the achievements from the event listing object
+* Create an event spec for triggering achievements :white_check_mark:
+* Create some default achievements :soon:
 * Store achievements so they're only earned once. (per user, per project?)
