@@ -9,7 +9,7 @@ module.exports =
       @achievementsView.achieve(event.msg)
 
     # Bronze trophy!
-    atom.emit "achievement:unlock", msg: "Achievements Activated!"
+    atom.emit "achievement:unlock", msg: "You're an achiever!"
 
   deactivate: ->
     @achievementsView.destroy()
