@@ -11,7 +11,7 @@ Unlock Achievements in your Editor
 Achievements can be triggered using the `achievement:unlock` event:
 
 ```
-atom.emit "achievement:unlock", name: "Used a tutorial!"
+atom.emit "achievement:unlock", msg: "Used a tutorial!"
 ```
 
 ## ROADMAP

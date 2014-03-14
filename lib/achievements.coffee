@@ -6,7 +6,7 @@ module.exports =
     @achievementsView = new AchievementsView(state.achievementsViewState)
 
     atom.on "achievement:unlock", (event) =>
-      @achievementsView.achieve(event.name)
+      @achievementsView.achieve(event.msg)
 
     # Bronze trophy!
     atom.emit "achievement:unlock", name: "Achievements Activated!"
