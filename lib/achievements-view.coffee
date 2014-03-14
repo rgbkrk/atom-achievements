@@ -9,7 +9,6 @@ class AchievementsView extends View
         @span outlet: "message"
 
   initialize: (serializeState) ->
-    atom.workspaceView.command "achievements:toggle", => @toggle()
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->
