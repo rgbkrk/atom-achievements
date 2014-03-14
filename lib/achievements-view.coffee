@@ -5,8 +5,7 @@ class AchievementsView extends View
   @content: ->
       @div tabindex: -1, class: 'achievements overlay from-top', =>
         @span class: 'loading loading-spinner-small inline-block'
-        @span "ACHIEVEMENT UNLOCKED: Package Activated", target: "message"
-
+        @span "ACHIEVEMENT UNLOCKED: Package Activated", outlet: "message"
 
   initialize: (serializeState) ->
     atom.workspaceView.command "achievements:toggle", => @toggle()
