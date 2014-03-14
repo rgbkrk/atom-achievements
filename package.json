@@ -1,7 +1,7 @@
 {
   "name": "achievements",
   "main": "./lib/achievements",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Unlock Achievements in your Editor",
   "repository": "https://github.com/rgbkrk/atom-achievements",
   "license": "MIT",
