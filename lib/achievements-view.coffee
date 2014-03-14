@@ -5,7 +5,8 @@ class AchievementsView extends View
   @content: ->
       @div tabindex: -1, class: 'achievements overlay from-top', =>
         @span class: 'loading loading-spinner-small inline-block'
-        @span "ACHIEVEMENT UNLOCKED: Package Activated", outlet: "message"
+        @span "ACHIEVEMENT UNLOCKED: "
+        @span outlet: "message"
 
   initialize: (serializeState) ->
     atom.workspaceView.command "achievements:toggle", => @toggle()
@@ -17,9 +18,13 @@ class AchievementsView extends View
   destroy: ->
     @detach()
 
+  cleanup: =>
+    @destroy()
+
+  achieve: (msg) ->
+    @message.text(msg)
+    atom.workspaceView.append(this)
+    setTimeout(@cleanup, atom.config.get('achievements.NoticeDelay'))
+
   toggle: ->
-    console.log "AchievementsView was toggled!"
-    if @hasParent()
-      @detach()
-    else
-      atom.workspaceView.append(this)
+    @achieve("How Toggling")

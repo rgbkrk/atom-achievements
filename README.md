@@ -10,7 +10,8 @@ Unlock Achievements in your Editor
 
 * Use the swirling octocat icon :white_check_mark:
 * Populate achievement bar on triggered events
-* Time achievements display out
+* Time achievements display out :white_check_mark:
+* Add configuration for timer :white_check_mark:
 * Listen for events to create achievements for
 * Create a simple object with `event :arrow_right: achievement` mappings
 * Store achievements so they're only earned once. (per user, per project?)

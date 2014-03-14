@@ -12,6 +12,9 @@ module.exports =
   serialize: ->
     achievementsViewState: @achievementsView.serialize()
 
+  configDefaults:
+    'NoticeDelay': 3000
+
 
   #createProgressView: ->
 #    $$ ->
