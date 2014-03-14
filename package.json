@@ -3,9 +3,6 @@
   "main": "./lib/achievements",
   "version": "0.0.1",
   "description": "Unlock Achievements in your Editor",
-  "activationEvents": [
-    "achievements:toggle"
-  ],
   "repository": "https://github.com/rgbkrk/atom-achievements",
   "license": "MIT",
   "engines": {

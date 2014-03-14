@@ -25,6 +25,3 @@ class AchievementsView extends View
     @message.text(msg)
     atom.workspaceView.append(this)
     setTimeout(@cleanup, atom.config.get('achievements.NoticeDelay'))
-
-  toggle: ->
-    @achieve("How Toggling")

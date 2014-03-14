@@ -1,10 +1,11 @@
 AchievementsView = require './achievements-view'
 
 module.exports =
-  achievementsView: null
 
   activate: (state) ->
     @achievementsView = new AchievementsView(state.achievementsViewState)
+
+    @achievementsView.achieve("Achievements Activated!")
 
   deactivate: ->
     @achievementsView.destroy()
@@ -13,11 +14,4 @@ module.exports =
     achievementsViewState: @achievementsView.serialize()
 
   configDefaults:
-    'NoticeDelay': 3000
-
-
-  #createProgressView: ->
-#    $$ ->
-#      @div tabindex: -1, class: 'overlay from-top', =>
-#        @span class: 'loading loading-spinner-small inline-block'
-#        @span "Updating package dependencies\u2026"
+    'NoticeDelay': 2500
