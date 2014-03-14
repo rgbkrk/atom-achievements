@@ -8,6 +8,13 @@ class Achiever
 
   constructor: (@unlocked_achievements) ->
 
+  achieve: (message) ->
+    if(not unlocked_achievements[message])
+      unlocked_achievements[message] = true
+      console.log("Achieved " + message)
+    else
+      console.log("Already did that")
+
   serialize: ->
     obj =
       deserializer: 'Achiever'

@@ -1,9 +1,15 @@
 AchievementsView = require './achievements-view'
+Achiever = require './achiever'
 
 module.exports =
 
   activate: (state) ->
     @achievementsView = new AchievementsView(state.achievementsViewState)
+    @achiever =
+      if state
+        deserialize(state)
+      else
+        new Achiever({})
 
     atom.on "achievement:unlock", (event) =>
       @achievementsView.achieve(event.msg)
