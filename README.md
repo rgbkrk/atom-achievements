@@ -14,6 +14,8 @@ Achievements can be triggered using the `achievement:unlock` event:
 atom.emit "achievement:unlock", msg: "Used a tutorial!"
 ```
 
+Emit events from your own packages to grant achievements to your users!
+
 ## ROADMAP
 
 * Use the swirling octocat icon :white_check_mark:
