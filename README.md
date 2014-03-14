@@ -6,7 +6,7 @@ Unlock Achievements in your Editor
 
 ## Configuration
 
-Set how long the achievements banner lasts by changing the notice delay (milliseconds).
+Set how long the achievements banner lasts by changing the notice delay (in milliseconds).
 
 ![](https://f.cloud.github.com/assets/836375/2424719/6a9ca422-abab-11e3-925c-3a85f87b3bb1.png)
 
