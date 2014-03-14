@@ -12,6 +12,6 @@ Unlock Achievements in your Editor
 * Populate achievement bar using a message :white_check_mark:
 * Time achievements display out :white_check_mark:
 * Add configuration for timer :white_check_mark:
-* Listen for events to create achievements for
 * Create a simple object with `event :arrow_right: achievement` mappings
+* Map the achievements from the event listing object
 * Store achievements so they're only earned once. (per user, per project?)
