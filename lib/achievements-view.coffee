@@ -3,8 +3,10 @@
 module.exports =
 class AchievementsView extends View
   @content: ->
-    @div class: 'achievements overlay from-top', =>
-      @div "The Achievements package is Alive! It's ALIVE!", class: "message"
+      @div tabindex: -1, class: 'achievements overlay from-top', =>
+        @span class: 'loading loading-spinner-small inline-block'
+        @span "ACHIEVEMENT UNLOCKED: Package Activated", target: "message"
+
 
   initialize: (serializeState) ->
     atom.workspaceView.command "achievements:toggle", => @toggle()
