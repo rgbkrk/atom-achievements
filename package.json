@@ -8,7 +8,5 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-    "serializable": "1.x"
-  }
+  "dependencies": {}
 }
