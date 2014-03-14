@@ -1,8 +1,10 @@
-module.exports =
-class Achiever
-  @version: 1
+Serializable = require 'serializable'
 
-  registerDeserializer(this)
+module.exports =
+class Achiever extends Serializable
+  @registerDeserializers(Achiever)
+  
+  @version: 1
 
   @deserialize: ({unlocked_achievements}) -> new Achiever(unlocked_achievements)
 
