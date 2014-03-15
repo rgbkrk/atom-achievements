@@ -28,4 +28,4 @@ Emit events from your own packages to grant achievements to your users!
 * Add configuration for timer :white_check_mark:
 * Create an event spec for triggering achievements :white_check_mark:
 * Create some default achievements :soon:
-* Store achievements so they're only earned once. (per user, per project?)
+* Store achievements so they're only earned once. (per user, per project?) :white_check_mark:
