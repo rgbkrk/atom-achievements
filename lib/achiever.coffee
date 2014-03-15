@@ -3,9 +3,19 @@ AchievementsView = require './achievements-view'
 module.exports =
 class Achiever
 
-  @version: 3
+  @version: 2
 
-  @deserialize: (achieverState) -> new Achiever(achieverState.unlocked_achievements)
+  @deserialize: (achieverState) ->
+    #
+    # TODO: In the future, we'll want to have a migration plan
+    #       for @version changes
+    #
+    # Example:
+    #
+    # if(achieverState.version <= @version)
+    #   # Do something different with this lesser versioned state
+
+    achiever = new Achiever(achieverState.unlocked_achievements)
 
   constructor: (@unlocked_achievements) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)
