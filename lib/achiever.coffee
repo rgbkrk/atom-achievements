@@ -14,12 +14,13 @@ class Achiever
       @achieve(event.msg)
 
   achieve: (message) ->
+    # TODO: Queue these up in case there are more than one achievement to
+    #       display in a short period of time
     if(not @unlocked_achievements[message])
       @unlocked_achievements[message] = true
-      console.log("Achieved " + message)
       @achievementsView.achieve(message)
     else
-      console.log("Already got the achievement '" + message + "'")
+      # Already achieved it
 
   serialize: ->
     obj =

@@ -17,6 +17,7 @@ class AchievementsView extends View
   destroy: ->
     @detach()
 
+  # destroy + this
   cleanup: =>
     @destroy()
 

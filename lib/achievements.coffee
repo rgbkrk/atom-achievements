@@ -5,7 +5,6 @@ module.exports =
   activate: (state) ->
     @achiever =
       if state?
-        #console.log(state)
         Achiever.deserialize(state.achieverState)
       else
         new Achiever({})
