@@ -5,7 +5,7 @@ class Achiever
 
   @version: 3
 
-  @deserialize: ({unlocked_achievements}) -> new Achiever(unlocked_achievements)
+  @deserialize: (achieverState) -> new Achiever(achieverState.unlocked_achievements)
 
   constructor: (@unlocked_achievements) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)

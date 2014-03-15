@@ -6,7 +6,7 @@ module.exports =
     @achiever =
       if state?
         #console.log(state)
-        new Achiever(state.achieverState.unlocked_achievements)
+        Achiever.deserialize(state.achieverState)
       else
         new Achiever({})
 
