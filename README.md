@@ -2,7 +2,7 @@
 
 Unlock Achievements in your Editor
 
-![](https://f.cloud.github.com/assets/836375/2418108/0a402398-ab37-11e3-8111-e0f374079515.gif)
+![](https://f.cloud.github.com/assets/836375/2427599/05c93360-abf8-11e3-9d5f-c1ff76d9043c.gif)
 
 ## Configuration
 
