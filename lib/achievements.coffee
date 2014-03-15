@@ -1,21 +1,23 @@
-AchievementsView = require './achievements-view'
+Achiever = require './achiever'
 
 module.exports =
 
   activate: (state) ->
-    @achievementsView = new AchievementsView(state.achievementsViewState)
-
-    atom.on "achievement:unlock", (event) =>
-      @achievementsView.achieve(event.msg)
+    @achiever =
+      if state? and state.achieverState?
+        Achiever.deserialize(state.achieverState)
+      else
+        new Achiever()
 
     # Bronze trophy!
     atom.emit "achievement:unlock", msg: "You're an achiever!"
 
   deactivate: ->
-    @achievementsView.destroy()
+    @achiever.destroy()
 
   serialize: ->
-    achievementsViewState: @achievementsView.serialize()
+    achieverState: @achiever.serialize()
 
   configDefaults:
+    # How long the achievement message is kept up for
     'NoticeDelay': 2500
