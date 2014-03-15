@@ -1,4 +1,5 @@
 Achievements = require '../lib/achievements'
+{WorkspaceView} = require 'atom'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
@@ -12,18 +13,22 @@ describe "Achievements", ->
     atom.workspaceView = new WorkspaceView
     activationPromise = atom.packages.activatePackage('achievements')
 
-  describe "when the achievements:toggle event is triggered", ->
-    it "attaches and then detaches the view", ->
-      expect(atom.workspaceView.find('.achievements')).not.toExist()
-
-      # This is an activation event, triggering it will cause the package to be
-      # activated.
-      atom.workspaceView.trigger 'achievements:toggle'
+  describe "when achievements is activated for the first time", ->
+    it "has an achievement", ->
 
       waitsForPromise ->
         activationPromise
 
       runs ->
         expect(atom.workspaceView.find('.achievements')).toExist()
-        atom.workspaceView.trigger 'achievements:toggle'
-        expect(atom.workspaceView.find('.achievements')).not.toExist()
+        #jasmine.clock().tick(atom.config.get('achievements.NoticeDelay'))
+        #expect(atom.workspaceView.find('.achievements')).not.toExist()
+
+  describe "when achievements is activated", ->
+    it "should have configuration set up with defaults"
+
+    waitsForPromise ->
+      activationPromise
+
+    runs ->
+      expect(atom.config.get('achievements.NoticeDelay')).toBe(2500)
