@@ -14,10 +14,16 @@ class Achiever
     #
     # if(achieverState.version <= @version)
     #   # Do something different with this lesser versioned state
+    #   # Could start over
 
-    achiever = new Achiever(achieverState.unlocked_achievements)
+    if(achieverState.unlockedAchievements?)
+      achiever = new Achiever(achieverState.unlockedAchievements)
+    else
+      achiever = new Achiever()
 
-  constructor: (@unlocked_achievements) ->
+    return achiever
+
+  constructor: (@unlockedAchievements={}) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)
 
     atom.on "achievement:unlock", (event) =>
@@ -26,8 +32,8 @@ class Achiever
   achieve: (message) ->
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
-    if(not @unlocked_achievements[message])
-      @unlocked_achievements[message] = true
+    if(not @unlockedAchievements[message])
+      @unlockedAchievements[message] = true
       @achievementsView.achieve(message)
     else
       # Already achieved it
@@ -36,7 +42,8 @@ class Achiever
     obj =
       deserializer: 'Achiever'
       version: Achiever.version
-      unlocked_achievements: @unlocked_achievements
+      unlockedAchievements: @unlockedAchievements
 
   destroy: ->
+    # Pass on to destroy the view
     @achievementsView.destroy()

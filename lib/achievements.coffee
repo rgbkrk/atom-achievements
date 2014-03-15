@@ -4,10 +4,10 @@ module.exports =
 
   activate: (state) ->
     @achiever =
-      if state?
+      if state? and state.achieverState?
         Achiever.deserialize(state.achieverState)
       else
-        new Achiever({})
+        new Achiever()
 
     # Bronze trophy!
     atom.emit "achievement:unlock", msg: "You're an achiever!"
@@ -19,4 +19,5 @@ module.exports =
     achieverState: @achiever.serialize()
 
   configDefaults:
+    # How long the achievement message is kept up for
     'NoticeDelay': 2500
