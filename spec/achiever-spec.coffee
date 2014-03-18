@@ -2,7 +2,7 @@ Achiever = require '../lib/achiever'
 {WorkspaceView} = require 'atom'
 
 
-class MockAchievementView
+class MockAchievementsView
   constructor: () ->
     @messages = []
 
@@ -12,46 +12,33 @@ class MockAchievementView
 
   destroy: () ->
 
-
+window.yar = []
 
 describe "Achievements with Mock View", ->
-  achiever = null
+  [achiever, mockAchievementsView] = []
 
   beforeEach ->
-    #achiever = new Achiever()
-    #mockAchievementView = new MockAchievementView
-    #achiever.achievementsView = mockAchievementView
-
-  describe "when a fresh achiever is created", ->
-    it "unlockedAchievements should be empty"
     achiever = new Achiever()
-    mockAchievementView = new MockAchievementView
-    achiever.achievementsView = mockAchievementView
+    mockAchievementsView = new MockAchievementsView
+    achiever.achievementsView = mockAchievementsView
 
+  it "has empty unlockedAchievements", ->
     expect(achiever.unlockedAchievements).toBeDefined()
 
-  describe "when achieve is called repeated times", ->
-    it "should only register the message once"
-    achiever = new Achiever()
-    mockAchievementView = new MockAchievementView
-    achiever.achievementsView = mockAchievementView
-
+  it "should only register an event once", ->
     achiever.achieve("Ran a test!")
-
-    expect(mockAchievementView.messages[0]).toBe "Ran a test!"
+    expect(mockAchievementsView.messages[0]).toBe "Ran a test!"
     # Reset
-    mockAchievementView.messages = []
+    mockAchievementsView.messages = []
 
     achiever.achieve("Ran a test!")
-    expect(mockAchievementView.messages[0]).not.toBeDefined()
+    expect(mockAchievementsView.messages[0]).not.toBeDefined()
 
   describe "when achievement:unlock is emitted", ->
-    it "should trigger achieve on the achiever"
 
-    achiever = new Achiever()
-    mockAchievementView = new MockAchievementView
-    achiever.achievementsView = mockAchievementView
+    beforeEach ->
+      atom.workspaceView = new WorkspaceView
 
-    atom.emit "achievement:unlock", msg: "EMITTED"
-
-    expect(mockAchievementView.messages[0]).toBe "EMITTED"
+    it "should trigger achieve on the achiever", ->
+      atom.emit "achievement:unlock", name: "EMITTED"
+      expect(mockAchievementsView.messages[0]).toBe "EMITTED"
