@@ -28,6 +28,8 @@ atom.emit "achievement:unlock",
 
 ![](https://f.cloud.github.com/assets/836375/2444882/5a0fcf74-ae64-11e3-8b36-3307d7182014.png)
 
+The name is what uniquely identifies the achievement.
+
 ### Message Spec v2
 
 ```
