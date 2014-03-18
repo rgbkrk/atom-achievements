@@ -37,7 +37,7 @@ class Achiever
   @migrateTov3: (unlockedAchievements) ->
     newUnlockedAchievements = {}
     for msg, val of unlockedAchievements
-      key = "undefined" + ":" + msg
+      key = generateKey("undefined", msg)
       newUnlockedAchievements[key] =
         name: msg
         requirement: msg
@@ -114,16 +114,16 @@ class Achiever
   #
   # Returns `undefined`.
   #
-  achieve: (name, requirement, category, package_name, points, iconURL) ->
+  achieve: (name, requirement, category, packageName, points, iconURL) ->
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
-    key = name + ":" + package_name
+    key = generateKey(packageName, name)
     if(not @unlockedAchievements[key])
       @unlockedAchievements[key] =
         name: name
         requirement: requirement
         category: category
-        package: package_name
+        package: packageName
         points: points
         iconURL: iconURL
 
@@ -140,3 +140,7 @@ class Achiever
   destroy: ->
     # Pass on to destroy the view
     @achievementsView.destroy()
+
+generateKey = (packageName, achievementName) ->
+  key = packageName + ":" + achievementName
+  return key.toLowerCase().trim()

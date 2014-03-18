@@ -54,15 +54,20 @@ describe "Achievements with Mock View", ->
       category: "testing"
       package: "achievements"
       points: 9001
+      iconURL: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
     achiever.achieve(event.name, event.requirement, event.category,
-                     event.package, event.points)
+                     event.package, event.points, event.iconURL)
 
-    expect(achiever.unlockedAchievements[event.name]).toEqual(
+    expected_key = (event.package + ":" + event.name).trim().toLowerCase()
+
+    expect(achiever.unlockedAchievements[expected_key]).toEqual(
+      name: event.name
       requirement: event.requirement
       category: event.category
       package: event.package
       points: event.points
+      iconURL: event.iconURL
     )
 
   it "should only register an event once", ->
@@ -99,6 +104,7 @@ describe "Achievements with Mock View", ->
         category: "testing"
         package: "achievements"
         points: 9001
+        iconURL: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
       theEvent = clone(event)
 
@@ -107,7 +113,7 @@ describe "Achievements with Mock View", ->
 
       expect(achiever.achieve).
         toHaveBeenCalledWith(event.name, event.requirement, event.category,
-                             event.package, event.points)
+                             event.package, event.points, event.iconURL)
 
     it "gracefully handles a v1 message spec", ->
       old_event =
@@ -119,10 +125,11 @@ describe "Achievements with Mock View", ->
         category: "undefined"
         package: "undefined"
         points: 0
+        iconURL: "images/octocat-spinner-128.gif"
 
       achiever.processUnlock(old_event)
       expect(achiever.achieve).toHaveBeenCalled()
 
       expect(achiever.achieve).
         toHaveBeenCalledWith(event.name, event.requirement, event.category,
-                             event.package, event.points)
+                             event.package, event.points, event.iconURL)
