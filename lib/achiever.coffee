@@ -55,10 +55,10 @@ class Achiever
       event.requirement = event.name
 
     if not event.category?
-      event.category = "Undefined"
+      event.category = "undefined"
 
     if not event.package?
-      event.package = "Undefined"
+      event.package = "undefined"
 
     if not event.points?
       event.points = 0 # :(
