@@ -82,7 +82,11 @@ class Achiever
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
     if(not @unlockedAchievements[name])
-      @unlockedAchievements[name] = true
+      @unlockedAchievements[name] =
+        requirement: requirement
+        category: category
+        package: package_name
+        points: points
       @achievementsView.achieve(name)
     else
       # Already achieved it
