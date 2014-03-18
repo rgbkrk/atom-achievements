@@ -87,7 +87,7 @@ describe "Achievements with Mock View", ->
       atom.emit "achievement:unlock", msg: "old specdonald"
       expect(mockAchievementsView.messages[0]).toBe "old specdonald"
 
-  describe "when process_unlock is called", ->
+  describe "when processUnlock is called", ->
 
     beforeEach ->
       spyOn(achiever, 'achieve')
@@ -102,7 +102,7 @@ describe "Achievements with Mock View", ->
 
       theEvent = clone(event)
 
-      achiever.process_unlock(theEvent)
+      achiever.processUnlock(theEvent)
       expect(achiever.achieve).toHaveBeenCalled()
 
       expect(achiever.achieve).
@@ -120,7 +120,7 @@ describe "Achievements with Mock View", ->
         package: "undefined"
         points: 0
 
-      achiever.process_unlock(old_event)
+      achiever.processUnlock(old_event)
       expect(achiever.achieve).toHaveBeenCalled()
 
       expect(achiever.achieve).

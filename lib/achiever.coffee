@@ -45,7 +45,7 @@ class Achiever
   constructor: (@unlockedAchievements={}) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)
 
-    atom.on "achievement:unlock", @process_unlock
+    atom.on "achievement:unlock", @processUnlock
 
 
   #
@@ -64,7 +64,7 @@ class Achiever
   #
   # Returns `undefined`.
   #
-  process_unlock: (event) =>
+  processUnlock: (event) =>
 
     # Legacy handling
     if "msg" of event
