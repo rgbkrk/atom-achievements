@@ -34,17 +34,21 @@ The name is what uniquely identifies the achievement.
 
 ```
 event - The {Object} event to process.
-  :name        - The {String} message to display to the user. Uniquely identifies the achievement.
+  :name        - The {String} message to display to the user.
+                 Part of the key that uniquely identifies the achievement.
   :requirement - The {String} that says how the user achieved this
   :category    - The {String} category where it belongs with other
                  achievements (e.g. linting, git, ruby)
-  :package     - The {String} package this event was emitted from
+  :package     - The {String} package this event was emitted from.
+                 Part of the key that uniquely identifies the achievement.
   :points      - The {Integer} number of points
   :iconURL     - The {String} URL of an icon to display for the user, which
                  can be base64 encoded but must have a valid data prefix
                  such as "data:image/png;base64,". Optional, defaults to
                  spinning octocat.
 ```
+
+Achievements are stored under key `{package}:{name}`.
 
 ## Configuration
 

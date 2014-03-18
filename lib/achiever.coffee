@@ -37,7 +37,9 @@ class Achiever
   @migrateTov3: (unlockedAchievements) ->
     newUnlockedAchievements = {}
     for msg, val of unlockedAchievements
-      newUnlockedAchievements[msg] =
+      key = "undefined" + ":" + msg
+      newUnlockedAchievements[key] =
+        name: msg
         requirement: msg
         category: "undefined"
         package: "undefined"
@@ -58,11 +60,13 @@ class Achiever
   # Handles migrations from older specifications with sane defaults.
   #
   # event - The {Object} event to process.
-  #   :name        - The {String} message to display to the user.  Uniquely identifies the achievement.
+  #   :name        - The {String} message to display to the user.
+  #                  Part of the key that uniquely identifies the achievement.
   #   :requirement - The {String} that says how the user achieved this.
   #   :category    - The {String} category where it belongs with other
   #                  achievements (e.g. linting, git, ruby).
   #   :package     - The {String} package this event was emitted from.
+  #                  Part of the key that uniquely identifies the achievement.
   #   :points      - The {Integer} number of points.
   #   :iconURL     - The {String} URL of an icon to display for the user, which
   #                  can be base64 encoded but must have a valid data prefix
@@ -98,11 +102,13 @@ class Achiever
   #
   # Public: Handle achievement
   #
-  # name        - The {String} message to display to the user.  Uniquely identifies the achievement.
+  # name        - The {String} message to display to the user.
+  #               Part of the key that uniquely identifies the achievement.
   # requirement - The {String} that says how the user achieved this.
   # category    - The {String} category where it belongs with other achievements.
   #               (e.g. linting, git, ruby)
   # package     - The {String} package this event was emitted from.
+  #               Part of the key that uniquely identifies the achievement.
   # points      - The {Integer} number of points.
   # iconURL     - The {String} URL of an image to show next to the achievement.
   #
@@ -111,8 +117,10 @@ class Achiever
   achieve: (name, requirement, category, package_name, points, iconURL) ->
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
-    if(not @unlockedAchievements[name])
-      @unlockedAchievements[name] =
+    key = name + ":" + package
+    if(not @unlockedAchievements[key])
+      @unlockedAchievements[key] =
+        name: name
         requirement: requirement
         category: category
         package: package_name
