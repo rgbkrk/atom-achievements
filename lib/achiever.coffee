@@ -28,6 +28,7 @@ class Achiever
         unlockedAchievements = achieverState.unlockedAchievements
 
       achiever = new Achiever(unlockedAchievements)
+
     else
       achiever = new Achiever()
 
@@ -57,12 +58,16 @@ class Achiever
   # Handles migrations from older specifications with sane defaults.
   #
   # event - The {Object} event to process.
-  #   :name        - The {String} message to display to the user
-  #   :requirement - The {String} that says how the user achieved this
+  #   :name        - The {String} message to display to the user.
+  #   :requirement - The {String} that says how the user achieved this.
   #   :category    - The {String} category where it belongs with other
-  #                  achievements (e.g. linting, git, ruby)
-  #   :package     - The {String} package this event was emitted from
-  #   :points      - The {Integer} number of points
+  #                  achievements (e.g. linting, git, ruby).
+  #   :package     - The {String} package this event was emitted from.
+  #   :points      - The {Integer} number of points.
+  #   :iconURL     - The {String} URL of an icon to display for the user, which
+  #                  can be base64 encoded but must have a valid data prefix
+  #                  such as "data:image/png;base64,". Optional, defaults to
+  #                  spinning octocat.
   #
   # Returns `undefined`.
   #
@@ -84,8 +89,11 @@ class Achiever
     if not event.points?
       event.points = 0 # :(
 
+    if not event.iconURL?
+      event.iconURL = "images/octocat-spinner-128.gif"
+
     @achieve(event.name, event.requirement, event.category, event.package,
-             event.points)
+             event.points, event.iconURL)
 
   #
   # Public: Handle achievement
@@ -96,10 +104,11 @@ class Achiever
   #               (e.g. linting, git, ruby)
   # package     - The {String} package this event was emitted from
   # points      - The {Integer} number of points
+  # iconURL     - The {String} URL of an image to show next to the achievement
   #
   # Returns `undefined`.
   #
-  achieve: (name, requirement, category, package_name, points) ->
+  achieve: (name, requirement, category, package_name, points, iconURL) ->
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
     if(not @unlockedAchievements[name])
@@ -108,7 +117,9 @@ class Achiever
         category: category
         package: package_name
         points: points
-      @achievementsView.achieve(name)
+        iconURL: iconURL
+
+      @achievementsView.achieve(name, iconURL)
     else
       # Already achieved it
 
