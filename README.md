@@ -48,7 +48,8 @@ event - The {Object} event to process.
                  spinning octocat.
 ```
 
-Achievements are stored under key `{package}:{name}`.
+Achievements are stored under key `{package}:{name}` within an associative array
+of unlocked achievements.
 
 ## Configuration
 
