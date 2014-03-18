@@ -58,7 +58,7 @@ class Achiever
   # Handles migrations from older specifications with sane defaults.
   #
   # event - The {Object} event to process.
-  #   :name        - The {String} message to display to the user.
+  #   :name        - The {String} message to display to the user.  Uniquely identifies the achievement.
   #   :requirement - The {String} that says how the user achieved this.
   #   :category    - The {String} category where it belongs with other
   #                  achievements (e.g. linting, git, ruby).
@@ -98,13 +98,13 @@ class Achiever
   #
   # Public: Handle achievement
   #
-  # name        - The {String} message to display to the user
-  # requirement - The {String} that says how the user achieved this
-  # category    - The {String} category where it belongs with other achievements
+  # name        - The {String} message to display to the user.  Uniquely identifies the achievement.
+  # requirement - The {String} that says how the user achieved this.
+  # category    - The {String} category where it belongs with other achievements.
   #               (e.g. linting, git, ruby)
-  # package     - The {String} package this event was emitted from
-  # points      - The {Integer} number of points
-  # iconURL     - The {String} URL of an image to show next to the achievement
+  # package     - The {String} package this event was emitted from.
+  # points      - The {Integer} number of points.
+  # iconURL     - The {String} URL of an image to show next to the achievement.
   #
   # Returns `undefined`.
   #

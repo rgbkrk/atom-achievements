@@ -32,7 +32,7 @@ atom.emit "achievement:unlock",
 
 ```
 event - The {Object} event to process.
-  :name        - The {String} message to display to the user
+  :name        - The {String} message to display to the user. Uniquely identifies the achievement.
   :requirement - The {String} that says how the user achieved this
   :category    - The {String} category where it belongs with other
                  achievements (e.g. linting, git, ruby)
