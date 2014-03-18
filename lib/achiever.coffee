@@ -117,7 +117,7 @@ class Achiever
   achieve: (name, requirement, category, package_name, points, iconURL) ->
     # TODO: Queue these up in case there are more than one achievement to
     #       display in a short period of time
-    key = name + ":" + package
+    key = name + ":" + package_name
     if(not @unlockedAchievements[key])
       @unlockedAchievements[key] =
         name: name
