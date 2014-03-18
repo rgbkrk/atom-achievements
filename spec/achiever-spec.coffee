@@ -45,6 +45,25 @@ describe "Achievements with Mock View", ->
 
   it "has empty unlockedAchievements", ->
     expect(achiever.unlockedAchievements).toBeDefined()
+    expect(achiever.unlockedAchievements).toEqual({})
+
+  it "should track all the fields from the v2 message spec", ->
+    event =
+      name: "MYNAME"
+      requirement: "Did stuff"
+      category: "testing"
+      package: "achievements"
+      points: 9001
+
+    achiever.achieve(event.name, event.requirement, event.category,
+                     event.package, event.points)
+
+    expect(achiever.unlockedAchievements[event.name]).toEqual(
+      requirement: event.requirement
+      category: event.category
+      package: event.package
+      points: event.points
+    )
 
   it "should only register an event once", ->
     achiever.achieve("Ran a test!")
