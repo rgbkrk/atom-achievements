@@ -5,16 +5,18 @@ class Achiever
 
   @version: 3
 
+  #
+  # Public: Turn a serialized achieverState into an {Achiever}.
+  #
+  # This method turns an achieverState into an {Achiever} instance, making sure
+  # to migrate the object to the current version spec.
+  #
+  # achieverState - The {Object} state of an {Achiever} as created by the
+  #                 serialize {Function}.
+  #
+  # Returns an {Achiever}.
+  #
   @deserialize: (achieverState) ->
-    #
-    # TODO: In the future, we'll want to have a migration plan
-    #       for @version changes
-    #
-    # Example:
-    #
-    # if(achieverState.version < @version)
-    #   # Do something different with this lesser versioned state
-    #   # Could start over
 
     if(achieverState.unlockedAchievements?)
       unlockedAchievements = null
