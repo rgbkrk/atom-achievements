@@ -3,7 +3,7 @@ AchievementsView = require './achievements-view'
 module.exports =
 class Achiever
 
-  @version: 2
+  @version: 3
 
   @deserialize: (achieverState) ->
     #
@@ -12,22 +12,41 @@ class Achiever
     #
     # Example:
     #
-    # if(achieverState.version <= @version)
+    # if(achieverState.version < @version)
     #   # Do something different with this lesser versioned state
     #   # Could start over
 
     if(achieverState.unlockedAchievements?)
-      achiever = new Achiever(achieverState.unlockedAchievements)
+      unlockedAchievements = null
+      if(achieverState.version < @version)
+        console.log("Migrating achievements to latest version...")
+        unlockedAchievements = @migrateTov3(achieverState.unlockedAchievements)
+        console.log("...Done. Achievements fully migrated.")
+      else
+        unlockedAchievements = achieverState.unlockedAchievements
+
+      achiever = new Achiever(unlockedAchievements)
     else
       achiever = new Achiever()
 
     return achiever
 
+  @migrateTov3: (unlockedAchievements) ->
+    newUnlockedAchievements = {}
+    for msg, val of unlockedAchievements
+      newUnlockedAchievements[msg] =
+        requirement: msg
+        category: "undefined"
+        package: "undefined"
+        points: 0 # :(
+
+    return newUnlockedAchievements
+
   constructor: (@unlockedAchievements={}) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)
 
     atom.on "achievement:unlock", @process_unlock
-    
+
 
   #
   # Public: Process an achievement unlock event
