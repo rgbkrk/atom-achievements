@@ -4,7 +4,7 @@ Unlock Achievements in your Editor
 
 ![](https://f.cloud.github.com/assets/836375/2445108/65747512-ae6a-11e3-9f65-61b31c68d73d.png)
 
-Install this *now* to opt-in to achievements from various packages. Earn EditorPoints,
+Install this *now* to opt-in to achievements from various packages.
 
 **Package Developers**: Achievements can be submitted by any package using the `achievement:unlock` event.
 This package takes care of storing the user's state of achievement so you don't have to.
