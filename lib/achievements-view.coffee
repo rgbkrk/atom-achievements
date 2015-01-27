@@ -29,5 +29,5 @@ class AchievementsView extends View
     @icon.attr('src', iconURL)
 
     @message.text(msg)
-    atom.workspaceView.append(this)
+    atom.views.getView(atom.workspace).append(this)
     setTimeout(@cleanup, atom.config.get('achievements.NoticeDelay'))
