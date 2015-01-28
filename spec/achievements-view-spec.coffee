@@ -5,7 +5,7 @@ describe "AchievementsView", ->
   activationPromise = null
 
   beforeEach ->
-    atom.workspaceView = new WorkspaceView
+    atom.views.getView(atom.workspace) = new WorkspaceView
 
   describe "when achieve is called", ->
     it "should show the achievement"
