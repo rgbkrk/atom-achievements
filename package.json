@@ -1,14 +1,14 @@
 {
   "name": "achievements",
   "main": "./lib/achievements",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Unlock Achievements in your Editor",
   "repository": "https://github.com/rgbkrk/atom-achievements",
   "license": "MIT",
   "author": "Kyle Kelley <rgbkrk@gmail.com>",
   "contributors": [
-     "Kyle Kelley <rgbkrk@gmail.com>",
-     "SduyXD <Rowincho@live.com>"
+    "Kyle Kelley <rgbkrk@gmail.com>",
+    "SduyXD <Rowincho@live.com>"
   ],
   "engines": {
     "atom": ">0.50.0"
