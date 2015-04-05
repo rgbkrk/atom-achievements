@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{WorkspaceView, View} = require 'atom-space-pen-views'
 
 module.exports =
 class AchievementsView extends View
@@ -29,5 +29,5 @@ class AchievementsView extends View
     @icon.attr('src', iconURL)
 
     @message.text(msg)
-    atom.views.getView(atom.workspace).append(this)
+    atom.workspace.addTopPanel(item: this)
     setTimeout(@cleanup, atom.config.get('achievements.NoticeDelay'))

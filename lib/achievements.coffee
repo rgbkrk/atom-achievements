@@ -9,6 +9,8 @@ module.exports =
       else
         new Achiever()
 
+    console.info "hellooooo"
+
     # Bronze trophy!
     atom.emit "achievement:unlock",
       name: "You're an achiever!"

@@ -1,11 +1,13 @@
 AchievementsView = require '../lib/achievements-view'
-{WorkspaceView} = require 'atom'
+{WorkspaceView} = require 'atom-space-pen-views'
 
 describe "AchievementsView", ->
   activationPromise = null
+  workspaceElement = null
 
   beforeEach ->
-    atom.views.getView(atom.workspace) = new WorkspaceView
+    # atom.views.getView(atom.workspace) = new WorkspaceView()
+    workspaceElement = atom.views.getView(atom.workspace)
 
   describe "when achieve is called", ->
     it "should show the achievement"

@@ -1,5 +1,5 @@
 Achievements = require '../lib/achievements'
-{WorkspaceView} = require 'atom'
+{WorkspaceView} = require 'atom-space-pen-views'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
@@ -8,9 +8,11 @@ Achievements = require '../lib/achievements'
 
 describe "Achievements", ->
   activationPromise = null
+  workspaceElement = null
 
   beforeEach ->
-    atom.workspaceView = new WorkspaceView
+    # atom.workspaceView = new WorkspaceView
+    workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('achievements')
 
   describe "when achievements is activated for the first time", ->
@@ -19,10 +21,15 @@ describe "Achievements", ->
       waitsForPromise ->
         activationPromise
 
+      checkIfAchivementsExists = () ->
+        return workspaceElement.getElementsByClassName('achievements').length > 0
+
       runs ->
-        expect(atom.workspaceView.find('.achievements')).toExist()
-        #jasmine.clock().tick(atom.config.get('achievements.NoticeDelay'))
-        #expect(atom.workspaceView.find('.achievements')).not.toExist()
+        expect(checkIfAchivementsExists()).toBe(true)
+        window.setTimeout ->
+          expect(checkIfAchivementsExists()).toBe(false)
+        , atom.config.get('achievements.NoticeDelay')
+
 
   describe "when achievements is activated", ->
     it "should have configuration set up with defaults"
