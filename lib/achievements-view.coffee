@@ -1,4 +1,4 @@
-{WorkspaceView, View} = require 'atom-space-pen-views'
+{View} = require 'atom-space-pen-views'
 
 module.exports =
 class AchievementsView extends View
