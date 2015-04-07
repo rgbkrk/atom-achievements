@@ -1,5 +1,5 @@
 Achiever = require '../lib/achiever'
-{WorkspaceView} = require 'atom'
+{WorkspaceView} = require 'atom-space-pen-views'
 
 clone = (obj) ->
   if not obj? or typeof obj isnt 'object'
@@ -80,9 +80,11 @@ describe "Achievements with Mock View", ->
     expect(mockAchievementsView.messages[0]).not.toBeDefined()
 
   describe "when achievement:unlock is emitted", ->
+    workspaceElement = null
 
     beforeEach ->
-      atom.workspaceView = new WorkspaceView
+      workspaceElement = atom.views.getView(atom.workspace)
+      # atom.workspaceView = new WorkspaceView
 
     it "passes the message on to the view", ->
       atom.emit "achievement:unlock", name: "EMITTED"

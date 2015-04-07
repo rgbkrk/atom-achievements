@@ -3,15 +3,58 @@
   "main": "./lib/achievements",
   "version": "0.7.0",
   "description": "Unlock Achievements in your Editor",
-  "repository": "https://github.com/rgbkrk/atom-achievements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rgbkrk/atom-achievements"
+  },
   "license": "MIT",
-  "author": "Kyle Kelley <rgbkrk@gmail.com>",
+  "author": {
+    "name": "Kyle Kelley",
+    "email": "rgbkrk@gmail.com"
+  },
   "contributors": [
-    "Kyle Kelley <rgbkrk@gmail.com>",
-    "SduyXD <Rowincho@live.com>"
+    {
+      "name": "Kyle Kelley",
+      "email": "rgbkrk@gmail.com"
+    },
+    {
+      "name": "SduyXD",
+      "email": "Rowincho@live.com"
+    },
+    {
+      "name": "Rodrigo Espinosa",
+      "email": "espinosacurbelo@gmail.com"
+    }
   ],
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=0.174.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.3"
+  },
+  "readme": "# Achievements!\n\nUnlock Achievements in your Editor\n\n![](https://f.cloud.github.com/assets/836375/2445108/65747512-ae6a-11e3-9f65-61b31c68d73d.png)\n\nInstall this *now* to opt-in to achievements from various packages.\n\n**Package Developers**: Achievements can be submitted by any package using the `achievement:unlock` event.\nThis package takes care of storing the user's state of achievement so you don't have to.\nRead on for more details!\n\n## Grant Achievements to Your Users!\n\nAchievements can be triggered using the `achievement:unlock` event:\n\n```CoffeeScript\natom.emit \"achievement:unlock\",\n  name: \"So many scripts, so little time!\"\n  requirement: \"Run a script while another is still running\"\n  category: \"runners\"\n  package: \"script\"\n  points: 200\n  iconURL: \"http://i.imgur.com/qRXoLmE.png\"\n```\n\n:tada:\n\n![](https://f.cloud.github.com/assets/836375/2444882/5a0fcf74-ae64-11e3-8b36-3307d7182014.png)\n\nThe name is what uniquely identifies the achievement.\n\n### Message Spec v2\n\n```\nevent - The {Object} event to process.\n  :name        - The {String} message to display to the user.\n                 Part of the key that uniquely identifies the achievement.\n  :requirement - The {String} that says how the user achieved this\n  :category    - The {String} category where it belongs with other\n                 achievements (e.g. linting, git, ruby)\n  :package     - The {String} package this event was emitted from.\n                 Part of the key that uniquely identifies the achievement.\n  :points      - The {Integer} number of points\n  :iconURL     - The {String} URL of an icon to display for the user, which\n                 can be base64 encoded but must have a valid data prefix\n                 such as \"data:image/png;base64,\". Optional, defaults to\n                 spinning octocat.\n```\n\nAchievements are stored under key `{package}:{name}` within an associative array\nof unlocked achievements.\n\n## Configuration\n\nSet how long the achievements banner lasts by changing the notice delay (in milliseconds).\n\n![](https://f.cloud.github.com/assets/836375/2424719/6a9ca422-abab-11e3-925c-3a85f87b3bb1.png)\n\nEmit events from your own packages to grant achievements to your users!\n\n## ROADMAP\n\n* Use the swirling octocat icon :white_check_mark:\n* Populate achievement bar using a message :white_check_mark:\n* Time achievements display out :white_check_mark:\n* Add configuration for timer :white_check_mark:\n* Create an event spec for triggering achievements :white_check_mark:\n* Create some default achievements :white_check_mark:\n* Store achievements so they're only earned once. (per user, per project?) :white_check_mark:\n* Allow for a custom icon :white_check_mark:\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/rgbkrk/atom-achievements/issues"
+  },
+  "homepage": "https://github.com/rgbkrk/atom-achievements",
+  "_id": "achievements@0.7.0",
+  "_shasum": "5da5f0a1161d9e4bd58091183dd970f19af56fae",
+  "_resolved": "file:../d-115127-56977-12v2ygv/package.tgz",
+  "_from": "../d-115127-56977-12v2ygv/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/achievements-view.coffee",
+        "lib/achievements.coffee",
+        "lib/achiever.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
 }
