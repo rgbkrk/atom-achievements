@@ -24,6 +24,8 @@ module.exports =
   serialize: ->
     achieverState: @achiever.serialize()
 
-  configDefaults:
+  config:
     # How long the achievement message is kept up for
-    'NoticeDelay': 2500
+    NoticeDelay:
+      type: 'integer'
+      default: 2500
