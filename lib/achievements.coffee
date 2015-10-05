@@ -10,7 +10,7 @@ module.exports =
         new Achiever()
 
     # Bronze trophy!
-    atom.emit "achievement:unlock",
+    atom.emitter.emit "achievement:unlock",
       name: "You're an achiever!"
       requirement: "Enabled the achievements package."
       category: "installation"

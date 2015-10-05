@@ -50,7 +50,7 @@ class Achiever
   constructor: (@unlockedAchievements={}) ->
     @achievementsView = new AchievementsView() #(state.achievementsViewState)
 
-    atom.on "achievement:unlock", @processUnlock
+    atom.emitter.on "achievement:unlock", @processUnlock
 
 
   #
