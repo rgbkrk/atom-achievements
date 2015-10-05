@@ -15,7 +15,7 @@ Read on for more details!
 Achievements can be triggered using the `achievement:unlock` event:
 
 ```CoffeeScript
-atom.emit "achievement:unlock",
+atom.emitter.emit "achievement:unlock",
   name: "So many scripts, so little time!"
   requirement: "Run a script while another is still running"
   category: "runners"

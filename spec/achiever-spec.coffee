@@ -87,11 +87,11 @@ describe "Achievements with Mock View", ->
       # atom.workspaceView = new WorkspaceView
 
     it "passes the message on to the view", ->
-      atom.emit "achievement:unlock", name: "EMITTED"
+      atom.emitter.emit "achievement:unlock", name: "EMITTED"
       expect(mockAchievementsView.messages[0]).toBe "EMITTED"
 
     it "handles the v1 message spec", ->
-      atom.emit "achievement:unlock", msg: "old specdonald"
+      atom.emitter.emit "achievement:unlock", msg: "old specdonald"
       expect(mockAchievementsView.messages[0]).toBe "old specdonald"
 
   describe "when processUnlock is called", ->
